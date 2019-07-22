@@ -1,0 +1,664 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Validate Library Parameters &mdash; Jenkins Templating Engine  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/banner.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Defining Non-Call Methods in Library Steps" href="noncall_methods.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Jenkins Templating Engine
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Templating/index.html">Pipeline Templating</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Templating/configuration_files/index.html">Configuration Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Templating/configuration_files/default_step_implementation.html">Default Step Implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Templating/configuration_files/sandboxing.html">Sandboxing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Templating/primitives/index.html">Primitives</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Templating/primitives/application_environments.html">Application Environments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Templating/primitives/keywords.html">Keywords</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Templating/primitives/stages.html">Stages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/index.html">Governance Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Governance/conditional_inheritance.html">Conditional Inheritance Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Library Development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="externalizing_config.html">Externalizing Library Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="library_sources.html">Library Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lifecycle_hooks.html">Leverage Lifecycle Hooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="noncall_methods.html">Defining Non-Call Methods in Library Steps</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Validate Library Parameters</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Jenkins Templating Engine</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library Development</a> &raquo;</li>
+        
+      <li>Validate Library Parameters</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/Library_Development/validate_library_parameters.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+
+
+
+
+
+<div class="section" id="validate-library-parameters">
+<span id="id1"></span><h1>Validate Library Parameters<a class="headerlink" href="#validate-library-parameters" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you haven’t read how to
+<a class="reference internal" href="externalizing_config.html#externalizing-library-configuration"><span class="std std-ref">externalize library configurations</span></a>,
+it’s strongly recommended you read that to have context on this page.</p>
+</div>
+<p>This page explains how to confirm that library parameters, which are field-value
+pairs passed to a library though its external configuration, are valid. This
+means confirming any parameters required by your library are supplied, and that
+all parameters supplied have an acceptable value and/or data type.</p>
+<p>For example, say your library requires a name for a Jenkins credential, and
+expects it to be passed through a field in your library’s config called
+“credential.” You would want to ensure when your library is used that:</p>
+<ol class="arabic simple">
+<li>In the aggregated <em>pipeline_config.groovy</em>, there is a “credential” field in your library’s configuration</li>
+<li>The value for that “credential” field is a String (since we usually reference Jenkins credentials by a name)</li>
+</ol>
+<div class="section" id="the-library-configuration-file-overview">
+<h2>The Library Configuration File - Overview<a class="headerlink" href="#the-library-configuration-file-overview" title="Permalink to this headline">¶</a></h2>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Including a library config (<em>library_config.groovy</em>) in your library is
+entirely optional. There are other ways to validate parameters, which are
+covered below</p>
+</div>
+<p>You can validate the parameters passed via <em>pipeline_config.groovy</em> by a library
+configuration file, or library config. This file, named <em>library_config.groovy</em>,
+goes at the root of your library and includes a list of required and optional
+fields, as well as tests you want to apply to those fields. When your library is
+loaded by a JTE pipeline, each of your library’s parameters from the aggregated
+pipeline config file are tested according to the contents of the library config.
+If those tests fail, or there’s an extra field you didn’t specify, the pipeline
+fails.</p>
+<p>Here’s an example of a <em>library_config.groovy</em> file:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">library_config.groovy</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-groovy"><div class="highlight"><pre><span></span><span class="n">fields</span><span class="o">{</span>
+  <span class="n">required</span><span class="o">{</span>
+    <span class="n">credential</span> <span class="o">=</span> <span class="n">String</span>
+    <span class="n">mode</span> <span class="o">=</span> <span class="o">[</span> <span class="s2">&quot;mode1&quot;</span><span class="o">,</span> <span class="s2">&quot;mode2&quot;</span> <span class="o">]</span>
+  <span class="o">}</span>
+  <span class="n">optional</span><span class="o">{</span>
+    <span class="n">library_option</span> <span class="o">=</span> <span class="s">/[oO]ption\s*\d+/</span>
+    <span class="n">do_optional_thing</span> <span class="o">=</span> <span class="n">Boolean</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<p>In this example, there are two required fields (“credential” and “mode”), and
+two optional fields (“library option” and “do_optional_thing”). The pipeline
+config is required to provide two parameters: a “credential” field with a String
+value and a “mode” field with a value of either “mode1” or “mode2.” There are
+also two optional fields: “library_option”, which must have a value that matches
+the regex expression <code class="docutils literal"><span class="pre">/[oO]ption\s*\d+/</span></code>, and “do_optional_thing”,
+which must have a Boolean value. Given this example library config, this
+would be a valid snippet from your aggregated pipeline config:</p>
+<div class="highlight-groovy"><div class="highlight"><pre><span></span><span class="n">libraries</span><span class="o">{</span>
+  <span class="n">your_library</span><span class="o">{</span>
+    <span class="n">credential</span> <span class="o">=</span> <span class="s2">&quot;credentialA&quot;</span>
+    <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;mode1&quot;</span>
+    <span class="n">library_option</span> <span class="o">=</span> <span class="s2">&quot;Option123&quot;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>As would this:</p>
+<div class="highlight-groovy"><div class="highlight"><pre><span></span><span class="n">libraries</span><span class="o">{</span>
+  <span class="n">your_library</span><span class="o">{</span>
+    <span class="n">credential</span> <span class="o">=</span> <span class="s2">&quot;secret-password&quot;</span>
+    <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;mode2&quot;</span>
+    <span class="n">library_option</span> <span class="o">=</span> <span class="s2">&quot;option 3&quot;</span>
+    <span class="n">do_optional_thing</span> <span class="o">=</span> <span class="kc">true</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Both these snippets have the two required fields, “credential” and “mode,” and
+the only other fields are listed as optional in the library config. In addition,
+the values for each of those fields pass the tests set in the library config.</p>
+</div>
+<div class="section" id="listing-fields">
+<h2>Listing Fields<a class="headerlink" href="#listing-fields" title="Permalink to this headline">¶</a></h2>
+<p>In your library config you specify a list of fields that you expect to
+be used in your library’s external configuration (i.e. in the pipeline config
+file). In this list, you must also distinguish between <em>required</em> and
+<em>optional</em> fields. This list establishes two rules:</p>
+<p>1. If a <em>required</em> field is not present in your library’s
+section of the pipeline configuration, then the pipeline fails</p>
+<p>2. If there is any field present in your library’s section of
+the pipeline configuration that is <strong>not</strong> listed as either a <em>required</em> or
+<em>optional</em> field, then the pipeline fails</p>
+</div>
+<div class="section" id="validating-parameters">
+<h2>Validating Parameters<a class="headerlink" href="#validating-parameters" title="Permalink to this headline">¶</a></h2>
+<p>For every field in your library configuration, you must specify a rule that
+field’s value must conform to. There are currently three types of rules:</p>
+<ul class="simple">
+<li>the value must be a particular data type (Type Match)</li>
+<li>the value must be one of a set of listed values (Enum Match)</li>
+<li>the value must match a given regex expression. (Regex Match)</li>
+</ul>
+<div class="section" id="type-match">
+<h3>Type Match<a class="headerlink" href="#type-match" title="Permalink to this headline">¶</a></h3>
+<p>If you want to test a parameter is of a particular data type (e.g. boolean,
+string), you put the name of that data type as the field’s value in the
+library config. For example, if I want to make sure “credential” is of type
+“String”, my <em>library_config.groovy</em> would contain:</p>
+<div class="highlight-groovy"><div class="highlight"><pre><span></span><span class="n">fields</span><span class="o">{</span>
+  <span class="n">required</span><span class="o">{</span>
+    <span class="n">credential</span> <span class="o">=</span> <span class="n">String</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>The current options for data types to test for are:</p>
+<ul class="simple">
+<li>boolean / Boolean</li>
+<li>String</li>
+<li>Integer / int</li>
+<li>Double</li>
+<li>BigDecimal</li>
+<li>Float</li>
+<li>Number</li>
+</ul>
+</div>
+<div class="section" id="enum-match">
+<h3>Enum Match<a class="headerlink" href="#enum-match" title="Permalink to this headline">¶</a></h3>
+<p>If you want to test that a parameter is one a particular set of values, you can
+put an array of acceptable options as the field’s value in the library config.
+For example, if you want to make sure the field “intensity” is either “high,”
+“medium,” or “low,” your <em>library_config.groovy</em> would contain:</p>
+<div class="highlight-groovy"><div class="highlight"><pre><span></span><span class="n">fields</span><span class="o">{</span>
+  <span class="n">required</span><span class="o">{</span>
+    <span class="n">intensity</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;high&quot;</span><span class="o">,</span> <span class="s2">&quot;medium&quot;</span><span class="o">,</span> <span class="s2">&quot;low&quot;</span><span class="o">]</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Given this library config, if the “intensity” value for your library (set by
+the pipeline config) isn’t one of those three values, then the pipeline will
+throw an error. For example, this pipeline config snippet would be valid:</p>
+<div class="highlight-groovy"><div class="highlight"><pre><span></span><span class="n">libraries</span><span class="o">{</span>
+  <span class="n">your_library</span><span class="o">{</span>
+    <span class="n">intensity</span> <span class="o">=</span> <span class="s2">&quot;medium&quot;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>But this snippet would cause an error:</p>
+<div class="highlight-groovy"><div class="highlight"><pre><span></span><span class="n">libraries</span><span class="o">{</span>
+  <span class="n">your_library</span><span class="o">{</span>
+    <span class="n">intensity</span> <span class="o">=</span> <span class="s2">&quot;intense&quot;</span>
+    <span class="c1">// throws an error because &quot;intense&quot; is neither &quot;high,&quot; &quot;medium&quot;, nor &quot;low&quot;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can put more than strings into these enum arrays; any type of object will work, and multiple types of objects can be in the same array.</p>
+</div>
+</div>
+<div class="section" id="regex-match">
+<h3>Regex Match<a class="headerlink" href="#regex-match" title="Permalink to this headline">¶</a></h3>
+<p>If you want to test that a String parameter conforms to a particular pattern,
+you can put a <a class="reference external" href="https://en.wikipedia.org/wiki/Regular_expression">regex</a>
+expression representing that pattern for the field’s value in the library config.
+For example, if you want to make sure “library_option” is one word with only
+alphanumeric characters, your <em>library_config.groovy</em> would contain:</p>
+<div class="highlight-groovy"><div class="highlight"><pre><span></span><span class="n">fields</span><span class="o">{</span>
+  <span class="n">required</span><span class="o">{</span>
+    <span class="n">library_option</span> <span class="o">=</span> <span class="s">/^[a-zA-Z0-9]+$/</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Given this library config, if the “credential” value for your library, set by
+the pipeline config, doesn’t match the regex expression <code class="docutils literal"><span class="pre">^[a-zA-Z0-9]+$</span></code>, then
+the pipeline will throw an error. For example, this snippet would be valid:</p>
+<div class="highlight-groovy"><div class="highlight"><pre><span></span><span class="n">libraries</span><span class="o">{</span>
+  <span class="n">your_library</span><span class="o">{</span>
+    <span class="n">credential</span> <span class="o">=</span> <span class="s2">&quot;secretPassword&quot;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>But this snippet would cause an error:</p>
+<div class="highlight-groovy"><div class="highlight"><pre><span></span><span class="n">libraries</span><span class="o">{</span>
+  <span class="n">your_library</span><span class="o">{</span>
+    <span class="n">credential</span> <span class="o">=</span> <span class="s2">&quot;secret-password&quot;</span>
+    <span class="c1">// throws an error because of the &quot;-&quot;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Resources for writing and understanding regular expressions include this
+<a class="reference external" href="https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html">Java summary of regular-expression constructs</a>,
+as well as this <a class="reference external" href="https://www.rexegg.com/regex-quickstart.html">Regex Cheat Sheet</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="nested-fields">
+<h2>Nested Fields<a class="headerlink" href="#nested-fields" title="Permalink to this headline">¶</a></h2>
+<p>The parameters for your library in the pipeline config aren’t always in a flat
+list; it’s common to logically group parameters in submaps. For example, your
+pipeline config may have a snippet like this:</p>
+<div class="highlight-groovy"><div class="highlight"><pre><span></span><span class="n">libraries</span><span class="o">{</span>
+  <span class="n">your_library</span><span class="o">{</span>
+    <span class="n">image</span><span class="o">{</span>
+      <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;your-image&quot;</span>
+      <span class="n">credential</span> <span class="o">=</span> <span class="s2">&quot;repo-cred&quot;</span>
+    <span class="o">}</span>
+    <span class="n">web_service</span><span class="o">{</span>
+      <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://example.com&quot;</span>
+      <span class="n">credential</span> <span class="o">=</span> <span class="s2">&quot;service-cred&quot;</span>
+      <span class="n">options</span><span class="o">{</span>
+        <span class="n">optionA</span> <span class="o">=</span> <span class="s2">&quot;foobar&quot;</span>
+        <span class="n">optionB</span> <span class="o">=</span> <span class="mi">7</span>
+        <span class="n">optionC</span> <span class="o">=</span> <span class="kc">true</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>The library config is only concerned with the lines that have key-value pairs
+where the value isn’t another map. For example, you wouldn’t be able to set <code class="docutils literal"><span class="pre">web_service</span></code>
+or <code class="docutils literal"><span class="pre">web_serivice.options</span></code> as a required or optional field, but you can set the
+fields under them, like <code class="docutils literal"><span class="pre">web_service.credential</span></code> or <code class="docutils literal"><span class="pre">web_service.options.optionB</span></code>
+as required/optional.</p>
+<p>Also, if two parameters are grouped under the same field they don’t both have
+to be required/optional. Continuing with the <em>pipeline_config.groovy</em> example
+snippet above, you could require <code class="docutils literal"><span class="pre">optionA</span></code> and <code class="docutils literal"><span class="pre">optionB</span></code>, but not <code class="docutils literal"><span class="pre">optionC</span></code>.
+The resulting library config might look like this:</p>
+<div class="highlight-groovy"><div class="highlight"><pre><span></span>fields{
+  required{
+    image{
+      name = String
+      credential = String
+    }
+    web_service{
+      url = /^(http|https):\/\/.+$/
+      credential = String
+      options{
+        optionA = String
+        optionB = Integer
+      }
+    }
+  }
+  optional{
+    web_service{
+      options{
+        optionC = Boolean
+      }
+    }
+  }
+}
+</pre></div>
+</div>
+<p>You would need to include the whole structure, but you can pick and choose
+which fields within those submaps are required and which are optional.</p>
+</div>
+<div class="section" id="additional-validation-methods">
+<h2>Additional Validation Methods<a class="headerlink" href="#additional-validation-methods" title="Permalink to this headline">¶</a></h2>
+<p>While using a library configuration covers most libraries’ validation
+requirements, you may wish to do more complex validation, or you may have
+a particular need that’s not met. For those cases, you can either create a
+separate pipeline step with the <code class="docutils literal"><span class="pre">&#64;Validate</span></code> annotation, or you can validate
+the parameters within the step itself.</p>
+<div class="section" id="validating-within-the-step">
+<h3>Validating Within the Step<a class="headerlink" href="#validating-within-the-step" title="Permalink to this headline">¶</a></h3>
+<p>In our primary example in how to
+<a class="reference internal" href="externalizing_config.html#externalizing-library-configuration"><span class="std std-ref">externalize library configurations</span></a>,
+we had a step that took an Integer <code class="docutils literal"><span class="pre">number</span></code> parameter, as well as a String
+<code class="docutils literal"><span class="pre">message</span></code> parameter. We assume that:</p>
+<ul class="simple">
+<li>those input parameters are both configured</li>
+<li>those input parameters are of the correct type</li>
+</ul>
+<p>To actually validate these assumptions, the following code could be used:</p>
+<div class="highlight-groovy"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">call</span><span class="o">(){</span>
+
+    <span class="c1">// define library configuration parameters</span>
+    <span class="n">String</span> <span class="n">error_msg</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    This step has the following library parameters:</span>
+
+<span class="s2">      number:  [Integer] // required</span>
+<span class="s2">      message: [String]  // required</span>
+
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="c1">// validate number</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">config</span><span class="o">.</span><span class="na">number</span><span class="o">){</span>
+        <span class="k">if</span> <span class="o">(!(</span><span class="n">config</span><span class="o">.</span><span class="na">number</span> <span class="k">instanceof</span> <span class="n">Integer</span><span class="o">)){</span>
+            <span class="n">error</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            number parameter must be an Integer, received [${config.number}]</span>
+<span class="s2">            --</span>
+<span class="s2">            ${error_msg}</span>
+<span class="s2">            &quot;&quot;&quot;</span>
+        <span class="o">}</span>
+    <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+        <span class="n">error</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        must provide number parameter</span>
+<span class="s2">        --</span>
+<span class="s2">        ${error_msg}</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// validate message</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">config</span><span class="o">.</span><span class="na">message</span><span class="o">){</span>
+        <span class="k">if</span> <span class="o">(!(</span><span class="n">config</span><span class="o">.</span><span class="na">message</span> <span class="k">instanceof</span> <span class="n">Integer</span><span class="o">)){</span>
+            <span class="n">error</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            message parameter must be a String, received [${config.message}]</span>
+<span class="s2">            --</span>
+<span class="s2">            ${error_msg}</span>
+<span class="s2">            &quot;&quot;&quot;</span>
+        <span class="o">}</span>
+    <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+        <span class="n">error</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        must provide message parameter</span>
+<span class="s2">        --</span>
+<span class="s2">        ${error_msg}</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// execute step functionality</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">def</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">config</span><span class="o">.</span><span class="na">number</span><span class="o">,</span> <span class="n">i</span><span class="o">++){</span>
+        <span class="n">println</span> <span class="n">config</span><span class="o">.</span><span class="na">message</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="validating-in-a-separate-step">
+<h3>Validating in a Separate Step<a class="headerlink" href="#validating-in-a-separate-step" title="Permalink to this headline">¶</a></h3>
+<p>Since your library’s parameters are accessible w/in any step of your library,
+you can create a separate step that performs the validation, then annotate that
+step with <code class="docutils literal"><span class="pre">&#64;validate</span></code> to run the step when the pipeline starts. Using the same
+example as above, the code below could be used.</p>
+<div class="highlight-groovy"><div class="highlight"><pre><span></span><span class="nd">@validate</span>
+<span class="kt">void</span> <span class="nf">call</span><span class="o">(){</span>
+
+    <span class="c1">// define library configuration parameters</span>
+    <span class="n">String</span> <span class="n">error_msg</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    This step has the following library parameters:</span>
+
+<span class="s2">      number:  [Integer] // required</span>
+<span class="s2">      message: [String]  // required</span>
+
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="c1">// validate number</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">config</span><span class="o">.</span><span class="na">number</span><span class="o">){</span>
+        <span class="k">if</span> <span class="o">(!(</span><span class="n">config</span><span class="o">.</span><span class="na">number</span> <span class="k">instanceof</span> <span class="n">Integer</span><span class="o">)){</span>
+            <span class="n">error</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            number parameter must be an Integer, received [${config.number}]</span>
+<span class="s2">            --</span>
+<span class="s2">            ${error_msg}</span>
+<span class="s2">            &quot;&quot;&quot;</span>
+        <span class="o">}</span>
+    <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+        <span class="n">error</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        must provide number parameter</span>
+<span class="s2">        --</span>
+<span class="s2">        ${error_msg}</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// validate message</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">config</span><span class="o">.</span><span class="na">message</span><span class="o">){</span>
+        <span class="k">if</span> <span class="o">(!(</span><span class="n">config</span><span class="o">.</span><span class="na">message</span> <span class="k">instanceof</span> <span class="n">Integer</span><span class="o">)){</span>
+            <span class="n">error</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            message parameter must be a String, received [${config.message}]</span>
+<span class="s2">            --</span>
+<span class="s2">            ${error_msg}</span>
+<span class="s2">            &quot;&quot;&quot;</span>
+        <span class="o">}</span>
+    <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+        <span class="n">error</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        must provide message parameter</span>
+<span class="s2">        --</span>
+<span class="s2">        ${error_msg}</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="noncall_methods.html" class="btn btn-neutral" title="Defining Non-Call Methods in Library Steps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Booz Allen Hamilton.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: master
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Tags</dt>
+            <dd><a href="../../1.0.0/pages/Library_Development/validate_library_parameters.html">1.0.0</a></dd>
+            <dd><a href="../../1.1/pages/Library_Development/validate_library_parameters.html">1.1</a></dd>
+            <dd><a href="../../1.1.1/pages/Library_Development/validate_library_parameters.html">1.1.1</a></dd>
+            <dd><a href="../../v0.1-alpha/index.html">v0.1-alpha</a></dd>
+            <dd><a href="../../v1.2/pages/Library_Development/validate_library_parameters.html">v1.2</a></dd>
+        </dl>
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../../master/pages/Library_Development/validate_library_parameters.html">master</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

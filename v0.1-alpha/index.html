@@ -1,0 +1,338 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Jenkins Templating Engine &mdash; Jenkins Templating Engine  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="_static/banner.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installing the Plugin" href="pages/installation.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> Jenkins Templating Engine
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="pages/installation.html">Installing the Plugin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages/Templating/index.html">Pipeline Templating</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages/Templating/configuration_files/index.html">Configuration Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages/Templating/configuration_files/default_step_implementation.html">Default Step Implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages/Templating/configuration_files/sandboxing.html">Sandboxing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages/Templating/primitives/index.html">Primitives</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages/Templating/primitives/application_environments.html">Application Environments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages/Templating/primitives/keywords.html">Keywords</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages/Templating/primitives/stages.html">Stages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages/Templating/libraries.html">Pipeline Libraries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages/Governance/index.html">Governance Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages/Governance/config_files.html">Configuration Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/Governance/governance_tiers.html">Governance Tiers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages/Library_Development/index.html">Library Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages/Library_Development/accessing_config.html">Accessing Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/Library_Development/library_sources.html">Library Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/Library_Development/lifecycle_hooks.html">Lifecycle Hooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages/Plugin_Development/index.html">Plugin Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages/Plugin_Development/execution_flow.html">Execution Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/Plugin_Development/lifecycle_hooks.html">Lifecycle Hooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/Plugin_Development/local_development.html">Local Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/Plugin_Development/template_binding.html">Template Binding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/Plugin_Development/template_primitives.html">Template Primitives</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages/Custom_Primitives/index.html">Adding a Custom Primitive</a><ul class="simple">
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Jenkins Templating Engine</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Jenkins Templating Engine</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+
+
+    
+    
+
+
+
+    <p class="scv-banner scv-sphinx_rtd_theme"><a href="../master/index.html"><b>Warning:</b> This document is for an old version of Jenkins Templating Engine. The main version is master.</a></p>
+<div class="section" id="jenkins-templating-engine">
+<span id="id1"></span><h1>Jenkins Templating Engine<a class="headerlink" href="#jenkins-templating-engine" title="Permalink to this headline">¶</a></h1>
+<p>The Jenkins Templating Engine (JTE) is a plugin developed by Booz Allen Hamilton enabling
+pipeline templating and governance. JTE  allows you to consolidate
+pipelines into shareable workflows that define the business logic of
+your software delivery processes while allowing for optimal pipeline code reuse by
+pulling out tool specific implementations into library modules.</p>
+<div class="section" id="how-does-it-work">
+<h2>How Does It Work?<a class="headerlink" href="#how-does-it-work" title="Permalink to this headline">¶</a></h2>
+<p>The Jenkins Templating Engine works off the idea of pipeline templates that define generically
+what should happen (and when) and accompanying configuration files that populate the template
+with implementation details.</p>
+</div>
+<div class="section" id="why-templating">
+<h2>Why Templating?<a class="headerlink" href="#why-templating" title="Permalink to this headline">¶</a></h2>
+<p>Pipelines are typically defined on a per application basis via a <code class="docutils literal"><span class="pre">Jenkinsfile</span></code> in the
+source code repository.  Often, common code can be pulled out into Shared Libraries to reduce
+code duplication but a few problems remain.</p>
+<p>Organization’s application portfolios often have a diverse technology stack, each requiring their
+own pipeline-as-code integrations.  It becomes increasingly complex to manage these different
+implementations across an organization while standardizing on the required software delivery processes.
+For organizations with strict governance requirements having a Jenkinsfile within the source code repository
+can allow developers to bypass these mandatory requirements.</p>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="_images/value.png"><img alt="_images/value.png" src="_images/value.png" style="width: 878.0px; height: 313.5px;" /></a>
+<p class="caption"><span class="caption-text">Why Templating?</span></p>
+</div>
+<div class="section" id="organizational-governance">
+<h3>Organizational Governance<a class="headerlink" href="#organizational-governance" title="Permalink to this headline">¶</a></h3>
+<p>The real power of JTE comes from creating shareable workflows and using them across teams.
+JTE allows you to create a centralized hierarchical governance for your pipeline configurations
+that aligns to your organizational structure.
+With governance tiers, organizations can accelerate enterprise adoption by creating inheritable pipelines that
+share common configurations.</p>
+</div>
+<div class="section" id="optimize-code-reuse">
+<h3>Optimize Code Reuse<a class="headerlink" href="#optimize-code-reuse" title="Permalink to this headline">¶</a></h3>
+<p>JTE allows you to share pipeline code effectively across multiple teams through the use of
+common pipeline libraries.</p>
+</div>
+<div class="section" id="simplify-pipeline-maintainability">
+<h3>Simplify Pipeline Maintainability<a class="headerlink" href="#simplify-pipeline-maintainability" title="Permalink to this headline">¶</a></h3>
+<p>When supporting pipelines for multiple applications it becomes more challenging to maintain
+the associated complexity.  Multiple tech stacks and tool integrations can lead to largely
+similar Jenkinsfiles with distinct differences around how specific parts of the pipeline function.</p>
+<p>JTE embraces the traditional software development practices of modularity and separation of concerns to
+create a more organized code base for your pipelines.</p>
+<p>test</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">At Booz Allen, we created the Jenkins Templating Engine to support our Solutions Delivery Platform; a
+DevSecOps platform accelerating adoption of modern software development best practices.</p>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pages/installation.html" class="btn btn-neutral float-right" title="Installing the Plugin" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Booz Allen Hamilton.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: v0.1-alpha
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Tags</dt>
+            <dd><a href="../1.0.0/index.html">1.0.0</a></dd>
+            <dd><a href="../1.1/index.html">1.1</a></dd>
+            <dd><a href="../1.1.1/index.html">1.1.1</a></dd>
+            <dd><a href="index.html">v0.1-alpha</a></dd>
+            <dd><a href="../v1.2/index.html">v1.2</a></dd>
+        </dl>
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../master/index.html">master</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,369 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Pipeline Templating &mdash; Jenkins Templating Engine  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/banner.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Configuration Files" href="configuration_files/index.html" />
+    <link rel="prev" title="Jenkins Templating Engine" href="../../index.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Jenkins Templating Engine
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Pipeline Templating</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuration_files/index.html">Configuration Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuration_files/default_step_implementation.html">Default Step Implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration_files/sandboxing.html">Sandboxing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="primitives/index.html">Primitives</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="primitives/application_environments.html">Application Environments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="primitives/keywords.html">Keywords</a></li>
+<li class="toctree-l3"><a class="reference internal" href="primitives/stages.html">Stages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/index.html">Governance Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Governance/conditional_inheritance.html">Conditional Inheritance Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Library_Development/index.html">Library Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Library_Development/externalizing_config.html">Externalizing Library Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Library_Development/library_sources.html">Library Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Library_Development/lifecycle_hooks.html">Leverage Lifecycle Hooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Library_Development/noncall_methods.html">Defining Non-Call Methods in Library Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Library_Development/validate_library_parameters.html">Validate Library Parameters</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Jenkins Templating Engine</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Pipeline Templating</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/Templating/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+
+
+
+
+
+<div class="section" id="pipeline-templating">
+<span id="id1"></span><h1>Pipeline Templating<a class="headerlink" href="#pipeline-templating" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="templates">
+<h2>Templates<a class="headerlink" href="#templates" title="Permalink to this headline">¶</a></h2>
+<p>When developing a pipeline used by multiple teams, you’ll often find that
+the workflow is the same while the specifics of what each step in the process does
+may differ between applications.</p>
+<p>Whether the application is a Java app packaged as a war and deployed to an AWS
+EC2 instance or a React app being statically bundled and deployed to an S3 bucket
+or Nginx instance, the steps in your pipeline are the same.</p>
+<p>In this example, both applications could have a pipeline workflow that performs unit testing,
+static code analysis, packaging an artifact, and deploying that artifact to an application environment.</p>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="../../_images/sample_template.png"><img alt="../../_images/sample_template.png" src="../../_images/sample_template.png" style="width: 653.0px; height: 137.5px;" /></a>
+<p class="caption"><span class="caption-text">Sample Pipeline Workflow</span></p>
+</div>
+<p>You would represent this workflow in a template! Templates are built by calling steps and referencing
+primitives defined in your pipeline configuration file.</p>
+<div class="section" id="steps">
+<h3>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h3>
+<p>Pipeline steps are methods supplied by pipeline libraries that implement a specific action in
+your pipeline template. In your pipeline configuration file you will specify what libraries should
+be loaded.</p>
+<p>Each of these libraries will contribute steps that can be called from your pipeline template.</p>
+<p>In our simple example, a pipeline template could be defined as follows:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">unit_test</span><span class="p">()</span>
+<span class="n">static_code_analysis</span><span class="p">()</span>
+<span class="n">build</span><span class="p">()</span>
+<span class="n">deploy_to</span> <span class="n">dev</span>
+</pre></div>
+</div>
+<p>This template could be reused by multiple teams using different tools by creating <a class="reference internal" href="../Library_Development/index.html#library-development"><span class="std std-ref">libraries</span></a> which
+implement the pipeline steps <code class="docutils literal"><span class="pre">unit_test</span></code>, <code class="docutils literal"><span class="pre">static_code_analysis</span></code>, <code class="docutils literal"><span class="pre">build</span></code>, and <code class="docutils literal"><span class="pre">deploy_to</span></code>.  Once these libraries
+are created, a configuration file is created to specify which libraries to load.</p>
+<p>For the deployment step, you’ll notice that a <code class="docutils literal"><span class="pre">dev</span></code> application environment was referenced to specify where the
+deployment should take place. This <code class="docutils literal"><span class="pre">dev</span></code> application environment is an example of a primitive that can be defined
+alongside your template in the configuration file.</p>
+</div>
+<div class="section" id="primitives">
+<h3>Primitives<a class="headerlink" href="#primitives" title="Permalink to this headline">¶</a></h3>
+<p>Primitives are template constructs whose purpose is to make the pipeline template as simple and easy to read as possible.</p>
+<p>The default primitives currently supported are <a class="reference internal" href="primitives/application_environments.html#application-environments"><span class="std std-ref">Application Environments</span></a>,
+<a class="reference internal" href="primitives/keywords.html#keywords"><span class="std std-ref">Keywords</span></a>, and <a class="reference internal" href="primitives/stages.html#stages"><span class="std std-ref">Stages</span></a>.</p>
+<p>It is possible to write a Jenkins Plugin that extends the Jenkins Templating Engine to add a
+<a class="reference internal" href="../Custom_Primitives/index.html#adding-a-custom-primitive"><span class="std std-ref">custom primitive</span></a>.</p>
+</div>
+<div class="section" id="configuration-files">
+<h3>Configuration Files<a class="headerlink" href="#configuration-files" title="Permalink to this headline">¶</a></h3>
+<p>To complete this example, we can build out sample pipeline configuration files for each application.</p>
+<p>Configuration files provide the information necessary to populate a pipeline template with what’s needed
+to execute.</p>
+<p>For our example, we can define a common pipeline configuration to be inherited by both applications that defines
+the development application environment and a common SonarQube pipeline library to perform the static code analysis:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">define</span> <span class="n">common</span> <span class="n">application</span> <span class="n">environment</span>
+<span class="n">application_environments</span><span class="p">{</span>
+    <span class="n">dev</span><span class="p">{</span>
+        <span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;Development&quot;</span>
+        <span class="n">ec2</span><span class="p">{</span>
+            <span class="n">ips</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;1.2.3.4&quot;</span><span class="p">,</span> <span class="s2">&quot;1.2.3.5&quot;</span> <span class="p">]</span>
+            <span class="n">credential_id</span> <span class="o">=</span> <span class="s2">&quot;ec2_ssh&quot;</span>
+        <span class="p">}</span>
+        <span class="n">s3</span><span class="p">{</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://s3.example.com&quot;</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;content/&quot;</span>
+            <span class="n">credential_id</span> <span class="o">=</span> <span class="s2">&quot;s3_bucket&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">define</span> <span class="n">pipeline</span> <span class="n">libraries</span> <span class="n">common</span> <span class="n">between</span> <span class="n">applications</span>
+<span class="n">libraries</span><span class="p">{</span>
+    <span class="n">merge</span> <span class="o">=</span> <span class="n">true</span>
+    <span class="n">sonarqube</span> <span class="o">//</span> <span class="n">supplies</span> <span class="n">the</span> <span class="n">static_code_analysis</span> <span class="n">step</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For the Java application:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">libraries</span><span class="p">{</span>
+    <span class="n">java</span>  <span class="o">//</span> <span class="n">supplies</span> <span class="n">the</span> <span class="n">build</span> <span class="n">step</span>
+    <span class="n">junit</span> <span class="o">//</span> <span class="n">supplies</span> <span class="n">the</span> <span class="n">unit_test</span> <span class="n">step</span>
+    <span class="n">ec2</span>   <span class="o">//</span> <span class="n">supplies</span> <span class="n">the</span> <span class="n">deploy_to</span> <span class="n">step</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For the React application:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">libraries</span><span class="p">{</span>
+    <span class="n">React</span> <span class="o">//</span> <span class="n">supplies</span> <span class="n">the</span> <span class="n">build</span> <span class="n">step</span>
+    <span class="n">jest</span>  <span class="o">//</span> <span class="n">supplies</span> <span class="n">the</span> <span class="n">unit_test</span> <span class="n">step</span>
+    <span class="n">s3</span>    <span class="o">//</span> <span class="n">supplies</span> <span class="n">the</span> <span class="n">deploy_to</span> <span class="n">step</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You would then create a <a class="reference internal" href="../Governance/index.html#governance-model"><span class="std std-ref">Governance Tier</span></a> to point JTE to your common
+configuration and place the application specific configurations at the root of their source
+code repository in a file called <code class="docutils literal"><span class="pre">pipeline_config.groovy</span></code>.</p>
+<p><a class="reference internal" href="configuration_files/index.html#configuration-files"><span class="std std-ref">Go here to learn more about JTE Configuration Files</span></a></p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="configuration_files/index.html" class="btn btn-neutral float-right" title="Configuration Files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../../index.html" class="btn btn-neutral" title="Jenkins Templating Engine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Booz Allen Hamilton.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: master
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Tags</dt>
+            <dd><a href="../../1.0.0/pages/Templating/index.html">1.0.0</a></dd>
+            <dd><a href="../../1.1/pages/Templating/index.html">1.1</a></dd>
+            <dd><a href="../../1.1.1/pages/Templating/index.html">1.1.1</a></dd>
+            <dd><a href="../../v0.1-alpha/pages/Templating/index.html">v0.1-alpha</a></dd>
+            <dd><a href="../../v1.2/pages/Templating/index.html">v1.2</a></dd>
+        </dl>
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../../master/pages/Templating/index.html">master</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
