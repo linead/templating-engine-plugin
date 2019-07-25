@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Application Environments &mdash; Jenkins Templating Engine  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/banner.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Stages" href="stages.html" />
+    <link rel="prev" title="What is a primitive in JTE?" href="what_is_a_primitive_in_jte.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Jenkins Templating Engine
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Pipeline Templating 💡</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Pipeline_Templating/what_is_a_pipeline_template.html">What is a pipeline template?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Pipeline_Templating/configuration_files.html">Configuration Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Pipeline_Templating/configuration_file_sandboxing.html">Configuration File Sandboxing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Primitives ⚡️</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="what_is_a_primitive_in_jte.html">What is a primitive in JTE?</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Application Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stages.html">Stages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keywords.html">Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="default_step_implementation.html">Default Step Implementation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Library Development 📖</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Library_Development/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Library_Development/externalizing_config.html">Externalizing Library Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Library_Development/validate_library_parameters.html">Validate Library Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Library_Development/lifecycle_hooks.html">Leverage Lifecycle Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Library_Development/multimethod_steps.html">Multi-Method Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Library_Development/library_sources.html">Library Sources</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Governance 👮‍</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/governance_model.html">Governance Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/governance_tier.html">Governance Tier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/hierarchical_governance.html">Hierarchical Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/config_file_aggregation.html">Configuration File Aggregation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/conditional_inheritance.html">Conditional Inheritance Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/pipeline_template_selection.html">Pipeline Template Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/library_selection.html">Library Selection</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Jenkins Templating Engine</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Application Environments</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/Primitives/application_environments.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+
+
+
+
+
+<div class="section" id="application-environments">
+<span id="id1"></span><h1>Application Environments<a class="headerlink" href="#application-environments" title="Permalink to this headline">¶</a></h1>
+<p>The Application Environment primitive exists to simplify referencing deployment
+targets from pipeline templates.</p>
+<div class="section" id="configuration-file-specification">
+<h2>Configuration File Specification<a class="headerlink" href="#configuration-file-specification" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">application_environments</span></code> key is used to begin declaring application environments.</p>
+<p>Within the application environments block, environments can be defined through subkeys.
+These subkeys will be used to reference the environment from your pipeline template.</p>
+<p>By default, application environments accept an optional <code class="docutils literal"><span class="pre">short_name</span></code> and <code class="docutils literal"><span class="pre">long_name</span></code>
+configuration.  These values will be set to the value of the environment name if not overridden.</p>
+<p>An example specification defining a <code class="docutils literal"><span class="pre">dev</span></code> and <code class="docutils literal"><span class="pre">prod</span></code> environment would be:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">application_environments</span><span class="p">{</span>
+    <span class="n">dev</span><span class="p">{</span>
+        <span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;Development&quot;</span>
+    <span class="p">}</span>
+    <span class="n">prod</span><span class="p">{</span>
+        <span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;Production&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then within a pipeline template, assuming there is a pipeline step called <code class="docutils literal"><span class="pre">deploy_to</span></code> that
+accepts an application environment as an argument, you could reference these objects via</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">build</span><span class="p">()</span>
+<span class="n">deploy_to</span> <span class="n">dev</span>
+<span class="n">test</span><span class="p">()</span>
+<span class="n">deploy_to</span> <span class="n">prod</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="additional-configurations">
+<h2>Additional Configurations<a class="headerlink" href="#additional-configurations" title="Permalink to this headline">¶</a></h2>
+<p>The Application Environment primitive can also accept an arbitrary number of additional
+configuration fields.</p>
+<p>This often comes in handy when libraries provide steps that accept an application environment
+as an input parameter. Configurations for the library across all environments would be defined
+in the library spec, while environment specific configurations would be defined on the environment.</p>
+<p>Suppose there was an ec2 library that accepts a <code class="docutils literal"><span class="pre">ssh_credential_id</span></code> configuration that specifies
+a Jenkins credential ID containing the ssh key to access both instances and an <code class="docutils literal"><span class="pre">ip</span></code> configuration
+supplying the IP for the environment to scp an artifact to.</p>
+<p>The configuration file for such a situation could be:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">application_environments</span><span class="p">{</span>
+    <span class="n">dev</span><span class="p">{</span>
+        <span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;Development&quot;</span>
+        <span class="n">ec2</span><span class="p">{</span>
+            <span class="n">ip</span> <span class="o">=</span> <span class="s2">&quot;1.2.3.4&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">prod</span><span class="p">{</span>
+        <span class="n">ec2</span><span class="p">{</span>
+            <span class="n">ip</span> <span class="o">=</span> <span class="s2">&quot;1.2.3.5&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">libraries</span><span class="p">{</span>
+    <span class="n">ec2</span><span class="p">{</span>
+        <span class="n">ssh_credential_id</span> <span class="o">=</span> <span class="s2">&quot;ssh_credential&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Refer to <a class="reference internal" href="../Library_Development/getting_started.html#getting-started"><span class="std std-ref">Library Development</span></a> for more information on how to build
+libraries that can leverage this pattern.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="stages.html" class="btn btn-neutral float-right" title="Stages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="what_is_a_primitive_in_jte.html" class="btn btn-neutral float-left" title="What is a primitive in JTE?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Booz Allen Hamilton
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: master
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Tags</dt>
+            <dd><a href="../../1.0.0/index.html">1.0.0</a></dd>
+            <dd><a href="../../1.1/index.html">1.1</a></dd>
+            <dd><a href="../../1.1.1/index.html">1.1.1</a></dd>
+            <dd><a href="../../v0.1-alpha/index.html">v0.1-alpha</a></dd>
+            <dd><a href="../../v1.2/index.html">v1.2</a></dd>
+        </dl>
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../../master/pages/Primitives/application_environments.html">master</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

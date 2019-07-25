@@ -17,13 +17,29 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
@@ -31,21 +47,16 @@
   <link rel="stylesheet" href="../../_static/banner.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -79,33 +90,38 @@
               
             
             
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="../Templating/index.html">Pipeline Templating</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Templating/configuration_files/index.html">Configuration Files</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Templating/configuration_files/default_step_implementation.html">Default Step Implementation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Templating/configuration_files/sandboxing.html">Sandboxing</a></li>
+              <p class="caption"><span class="caption-text">Pipeline Templating 💡</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Pipeline_Templating/what_is_a_pipeline_template.html">What is a pipeline template?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Pipeline_Templating/configuration_files.html">Configuration Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Pipeline_Templating/configuration_file_sandboxing.html">Configuration File Sandboxing</a></li>
 </ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../Templating/primitives/index.html">Primitives</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Templating/primitives/application_environments.html">Application Environments</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Templating/primitives/keywords.html">Keywords</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Templating/primitives/stages.html">Stages</a></li>
+<p class="caption"><span class="caption-text">Primitives ⚡️</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Primitives/what_is_a_primitive_in_jte.html">What is a primitive in JTE?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Primitives/application_environments.html">Application Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Primitives/stages.html">Stages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Primitives/keywords.html">Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Primitives/default_step_implementation.html">Default Step Implementation</a></li>
 </ul>
-</li>
+<p class="caption"><span class="caption-text">Library Development 📖</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Library_Development/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Library_Development/externalizing_config.html">Externalizing Library Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Library_Development/validate_library_parameters.html">Validate Library Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Library_Development/lifecycle_hooks.html">Leverage Lifecycle Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Library_Development/multimethod_steps.html">Multi-Method Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Library_Development/library_sources.html">Library Sources</a></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../Governance/index.html">Governance Model</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Governance/conditional_inheritance.html">Conditional Inheritance Examples</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../Library_Development/index.html">Library Development</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Library_Development/externalizing_config.html">Externalizing Library Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Library_Development/library_sources.html">Library Sources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Library_Development/lifecycle_hooks.html">Leverage Lifecycle Hooks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Library_Development/noncall_methods.html">Defining Non-Call Methods in Library Steps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Library_Development/validate_library_parameters.html">Validate Library Parameters</a></li>
-</ul>
-</li>
+<p class="caption"><span class="caption-text">Governance 👮‍</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/governance_model.html">Governance Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/governance_tier.html">Governance Tier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/hierarchical_governance.html">Hierarchical Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/config_file_aggregation.html">Configuration File Aggregation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/conditional_inheritance.html">Conditional Inheritance Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/pipeline_template_selection.html">Pipeline Template Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/library_selection.html">Library Selection</a></li>
 </ul>
 
             
@@ -193,7 +209,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Booz Allen Hamilton.
+        &copy; Copyright 2018, Booz Allen Hamilton
 
     </p>
   </div>
@@ -231,32 +247,16 @@
 </div>
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
-            VERSION:'',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

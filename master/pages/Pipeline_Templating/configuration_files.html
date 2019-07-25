@@ -1,0 +1,355 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configuration Files &mdash; Jenkins Templating Engine  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/banner.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Configuration File Sandboxing" href="configuration_file_sandboxing.html" />
+    <link rel="prev" title="What is a pipeline template?" href="what_is_a_pipeline_template.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Jenkins Templating Engine
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Pipeline Templating 💡</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="what_is_a_pipeline_template.html">What is a pipeline template?</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_file_sandboxing.html">Configuration File Sandboxing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Primitives ⚡️</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Primitives/what_is_a_primitive_in_jte.html">What is a primitive in JTE?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Primitives/application_environments.html">Application Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Primitives/stages.html">Stages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Primitives/keywords.html">Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Primitives/default_step_implementation.html">Default Step Implementation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Library Development 📖</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Library_Development/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Library_Development/externalizing_config.html">Externalizing Library Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Library_Development/validate_library_parameters.html">Validate Library Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Library_Development/lifecycle_hooks.html">Leverage Lifecycle Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Library_Development/multimethod_steps.html">Multi-Method Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Library_Development/library_sources.html">Library Sources</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Governance 👮‍</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/governance_model.html">Governance Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/governance_tier.html">Governance Tier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/hierarchical_governance.html">Hierarchical Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/config_file_aggregation.html">Configuration File Aggregation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/conditional_inheritance.html">Conditional Inheritance Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/pipeline_template_selection.html">Pipeline Template Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/library_selection.html">Library Selection</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Jenkins Templating Engine</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Configuration Files</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/Pipeline_Templating/configuration_files.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+
+
+
+
+
+<div class="section" id="configuration-files">
+<span id="id1"></span><h1>Configuration Files<a class="headerlink" href="#configuration-files" title="Permalink to this headline">¶</a></h1>
+<p>With the Jenkins Templating Engine, configuration files are used to populate templates with
+the information necessary to execute.</p>
+<p>The configuration file is a groovy file named <code class="docutils literal"><span class="pre">pipeline_config.groovy</span></code> that gets placed at
+the root of the source code repository or within a pipeline configuration repository.</p>
+<div class="section" id="syntax">
+<h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
+<p>The configuration file is a custom groovy domain specific language intended to avoid the
+burdensome syntax of JSON without the whitespace pitfalls of YAML.</p>
+<p>While the flexibility of what can be done within a configuration file is limited by the
+<a class="reference internal" href="configuration_file_sandboxing.html#sandboxing"><span class="std std-ref">sandbox</span></a>, the file is executed as a groovy script and builds a configuration object.</p>
+<p>The configuration file acts as a nested builder language will accept any arbitrary configuration. Beyond
+several JTE configuration fields, it is up to specific primitives and libraries to provide meaning to the
+keys and values provided within a configuration.</p>
+<p>An example configuration file would be:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">restrict</span> <span class="n">individual</span> <span class="n">repository</span> <span class="n">Jenkinsfiles</span>
+<span class="n">allow_scm_jenkinsfile</span> <span class="o">=</span> <span class="n">false</span>
+
+<span class="o">//</span> <span class="n">define</span> <span class="n">application</span> <span class="n">environment</span> <span class="n">objects</span>
+<span class="n">application_environments</span><span class="p">{</span>
+    <span class="n">dev</span><span class="p">{</span>
+        <span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;Development&quot;</span>
+    <span class="p">}</span>
+    <span class="n">prod</span><span class="p">{</span>
+        <span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;Production&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="o">/*</span>
+  <span class="n">define</span> <span class="n">libraries</span> <span class="n">to</span> <span class="n">load</span><span class="o">.</span>
+  <span class="n">available</span> <span class="n">libraries</span> <span class="n">are</span> <span class="n">based</span> <span class="n">upon</span> <span class="n">the</span>
+  <span class="n">library</span> <span class="n">sources</span> <span class="n">configured</span><span class="o">.</span>
+<span class="o">*/</span>
+<span class="n">libraries</span><span class="p">{</span>
+    <span class="n">github</span>
+    <span class="n">sonarqube</span>
+    <span class="n">docker</span>
+    <span class="o">//</span> <span class="n">library</span> <span class="n">configurations</span> <span class="n">are</span> <span class="n">determined</span> <span class="n">by</span>
+    <span class="o">//</span> <span class="n">the</span> <span class="n">specific</span> <span class="n">library</span> <span class="n">implementation</span>
+    <span class="n">openshift</span><span class="p">{</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://example.openshift.com&quot;</span>
+        <span class="n">cred_id</span> <span class="o">=</span> <span class="s2">&quot;openshift&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="configurations">
+<h2>Configurations<a class="headerlink" href="#configurations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="application-jenkinsfiles">
+<h3>Application Jenkinsfiles<a class="headerlink" href="#application-jenkinsfiles" title="Permalink to this headline">¶</a></h3>
+<p>By default, if there is a Jenkinsfile in an application source code repository
+it will be executed as the pipeline template.</p>
+<p>When using JTE to share a common pipeline template across multiple applications
+an organization may want to prevent individual repositories from providing their
+own pipeline templates for governance.</p>
+<p>To disable this default behavior, specify <code class="docutils literal"><span class="pre">allow_scm_jenkinsfile</span> <span class="pre">=</span> <span class="pre">false</span></code> within
+a governance tier’s configuration file.</p>
+<p>For a full overview of how governance works with JTE, check out the
+<a class="reference internal" href="../Governance/governance_model.html#governance-model"><span class="std std-ref">Governance Model</span></a>.</p>
+</div>
+<div class="section" id="template-methods">
+<h3>Template Methods<a class="headerlink" href="#template-methods" title="Permalink to this headline">¶</a></h3>
+<p>The JTE model is similar in design to the <a class="reference external" href="https://dzone.com/articles/design-patterns-template-method">Template Method Design Pattern</a>.
+A template is defined which invokes abstract methods (steps) yet to be defined.</p>
+<p>These methods are then implemented by either steps from the libraries loaded or the <a class="reference internal" href="../Primitives/default_step_implementation.html#default-step-implementation"><span class="std std-ref">default step implementation</span></a>.</p>
+<p>As a result, situations may arise where a step is called from a template that has not been implemented via the available options. In some cases,
+this is acceptable.</p>
+<p>The <code class="docutils literal"><span class="pre">template_methods</span></code> block of your configuration file is used to declare the steps that will be called from your template. In the event
+that a step is called that has not been defined, it will be routed to the default step implementation if it’s name appears in the <code class="docutils literal"><span class="pre">template_methods</span></code> block.</p>
+<p>By default, JTE provides the following default values for <code class="docutils literal"><span class="pre">template_methods</span></code>.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">template_methods</span><span class="p">{</span>
+    <span class="n">unit_test</span>
+    <span class="n">static_code_analysis</span>
+    <span class="n">build</span>
+    <span class="n">scan_container_image</span>
+    <span class="n">penetration_test</span>
+    <span class="n">accessibility_compliance_test</span>
+    <span class="n">performance_test</span>
+    <span class="n">functional_test</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="configuration_file_sandboxing.html" class="btn btn-neutral float-right" title="Configuration File Sandboxing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="what_is_a_pipeline_template.html" class="btn btn-neutral float-left" title="What is a pipeline template?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Booz Allen Hamilton
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: master
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Tags</dt>
+            <dd><a href="../../../1.0.0/index.html">1.0.0</a></dd>
+            <dd><a href="../../../1.1/index.html">1.1</a></dd>
+            <dd><a href="../../../1.1.1/index.html">1.1.1</a></dd>
+            <dd><a href="../../../v0.1-alpha/index.html">v0.1-alpha</a></dd>
+            <dd><a href="../../../v1.2/index.html">v1.2</a></dd>
+        </dl>
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="configuration_files.html">master</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

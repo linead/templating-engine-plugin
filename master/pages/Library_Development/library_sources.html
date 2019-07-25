@@ -17,13 +17,29 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
@@ -31,23 +47,18 @@
   <link rel="stylesheet" href="../../_static/banner.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Leverage Lifecycle Hooks" href="lifecycle_hooks.html" />
-    <link rel="prev" title="Externalizing Library Configuration" href="externalizing_config.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
+    <link rel="next" title="Governance Model" href="../Governance/governance_model.html" />
+    <link rel="prev" title="Multi-Method Steps" href="multimethod_steps.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -81,33 +92,38 @@
               
             
             
-              <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../Templating/index.html">Pipeline Templating</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Templating/configuration_files/index.html">Configuration Files</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Templating/configuration_files/default_step_implementation.html">Default Step Implementation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Templating/configuration_files/sandboxing.html">Sandboxing</a></li>
+              <p class="caption"><span class="caption-text">Pipeline Templating 💡</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Pipeline_Templating/what_is_a_pipeline_template.html">What is a pipeline template?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Pipeline_Templating/configuration_files.html">Configuration Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Pipeline_Templating/configuration_file_sandboxing.html">Configuration File Sandboxing</a></li>
 </ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../Templating/primitives/index.html">Primitives</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Templating/primitives/application_environments.html">Application Environments</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Templating/primitives/keywords.html">Keywords</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Templating/primitives/stages.html">Stages</a></li>
+<p class="caption"><span class="caption-text">Primitives ⚡️</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Primitives/what_is_a_primitive_in_jte.html">What is a primitive in JTE?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Primitives/application_environments.html">Application Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Primitives/stages.html">Stages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Primitives/keywords.html">Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Primitives/default_step_implementation.html">Default Step Implementation</a></li>
 </ul>
-</li>
+<p class="caption"><span class="caption-text">Library Development 📖</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="externalizing_config.html">Externalizing Library Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="validate_library_parameters.html">Validate Library Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lifecycle_hooks.html">Leverage Lifecycle Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multimethod_steps.html">Multi-Method Steps</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Library Sources</a></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../Governance/index.html">Governance Model</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Governance/conditional_inheritance.html">Conditional Inheritance Examples</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Library Development</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="externalizing_config.html">Externalizing Library Configuration</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Library Sources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lifecycle_hooks.html">Leverage Lifecycle Hooks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="noncall_methods.html">Defining Non-Call Methods in Library Steps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="validate_library_parameters.html">Validate Library Parameters</a></li>
-</ul>
-</li>
+<p class="caption"><span class="caption-text">Governance 👮‍</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/governance_model.html">Governance Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/governance_tier.html">Governance Tier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/hierarchical_governance.html">Hierarchical Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/config_file_aggregation.html">Configuration File Aggregation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/conditional_inheritance.html">Conditional Inheritance Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/pipeline_template_selection.html">Pipeline Template Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/library_selection.html">Library Selection</a></li>
 </ul>
 
             
@@ -153,8 +169,6 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">Library Development</a> &raquo;</li>
-        
       <li>Library Sources</li>
     
     
@@ -189,7 +203,7 @@ libraries contribute the same step name, they can be swapped in and out of the t
 execution by modifying the pipeline configuration.</p>
 <div class="section" id="library-source-jenkins-configuration">
 <h2>Library Source Jenkins Configuration<a class="headerlink" href="#library-source-jenkins-configuration" title="Permalink to this headline">¶</a></h2>
-<p>Library Sources get configured as part of a <a class="reference internal" href="../Governance/index.html#governance-model"><span class="std std-ref">Governance Tier</span></a>.  Within <code class="docutils literal"><span class="pre">Manage</span>
+<p>Library Sources get configured as part of a <a class="reference internal" href="../Governance/governance_model.html#governance-model"><span class="std std-ref">Governance Tier</span></a>.  Within <code class="docutils literal"><span class="pre">Manage</span>
 <span class="pre">Jenkins</span> <span class="pre">&gt;</span> <span class="pre">Configure</span> <span class="pre">System</span></code> you’ll find the global Jenkins Templating Engine Configuration:</p>
 <img alt="../../_images/library_source_configuration.png" src="../../_images/library_source_configuration.png" />
 <p>Under <code class="docutils literal"><span class="pre">Library</span> <span class="pre">Sources</span></code> you’ll be able to add as many sources as you choose.</p>
@@ -281,10 +295,6 @@ will make the libraries <code class="docutils literal"><span class="pre">maven</
 </pre></div>
 </div>
 <p>and in both instances, the applications would be using the same pipeline template.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">For a more in-depth view on how to build a library, go check out <a class="reference internal" href="index.html#library-development"><span class="std std-ref">Library Development</span></a></p>
-</div>
 </div>
 </div>
 
@@ -296,10 +306,10 @@ will make the libraries <code class="docutils literal"><span class="pre">maven</
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="lifecycle_hooks.html" class="btn btn-neutral float-right" title="Leverage Lifecycle Hooks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../Governance/governance_model.html" class="btn btn-neutral float-right" title="Governance Model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="externalizing_config.html" class="btn btn-neutral" title="Externalizing Library Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="multimethod_steps.html" class="btn btn-neutral float-left" title="Multi-Method Steps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -308,7 +318,7 @@ will make the libraries <code class="docutils literal"><span class="pre">maven</
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Booz Allen Hamilton.
+        &copy; Copyright 2018, Booz Allen Hamilton
 
     </p>
   </div>
@@ -346,32 +356,16 @@ will make the libraries <code class="docutils literal"><span class="pre">maven</
 </div>
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
-            VERSION:'',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
