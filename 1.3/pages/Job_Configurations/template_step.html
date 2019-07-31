@@ -1,0 +1,337 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>The Template Step &mdash; Jenkins Templating Engine  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/banner.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Individual Pipeline Jobs" href="pipeline.html" />
+    <link rel="prev" title="Configuration File Sandboxing" href="../Pipeline_Templating/configuration_file_sandboxing.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Jenkins Templating Engine
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Pipeline Templating 🧩</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Pipeline_Templating/what_is_a_pipeline_template.html">What is a pipeline template?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Pipeline_Templating/configuration_files.html">Configuration Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Pipeline_Templating/configuration_file_sandboxing.html">Configuration File Sandboxing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Job Types ⚙️</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The Template Step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipeline.html">Individual Pipeline Jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repository.html">Multibranch Job</a></li>
+<li class="toctree-l1"><a class="reference internal" href="github_org.html">GitHub Organization Job</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Primitives ⚡️</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Primitives/what_is_a_primitive_in_jte.html">What is a primitive in JTE?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Primitives/application_environments.html">Application Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Primitives/stages.html">Stages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Primitives/keywords.html">Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Primitives/default_step_implementation.html">Default Step Implementation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Library Development 📖</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Library_Development/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Library_Development/externalizing_config.html">Externalizing Library Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Library_Development/validate_library_parameters.html">Validate Library Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Library_Development/lifecycle_hooks.html">Leverage Lifecycle Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Library_Development/multimethod_steps.html">Multi-Method Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Library_Development/library_sources.html">Library Sources</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Governance 👮‍</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/governance_model.html">Governance Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/governance_tier.html">Governance Tier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/hierarchical_governance.html">Hierarchical Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/config_file_aggregation.html">Configuration File Aggregation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/conditional_inheritance.html">Conditional Inheritance Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/pipeline_template_selection.html">Pipeline Template Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Governance/library_selection.html">Library Selection</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Jenkins Templating Engine</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>The Template Step</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/Job_Configurations/template_step.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+
+
+    
+    
+
+
+
+    <p class="scv-banner scv-sphinx_rtd_theme"><a href="../../../master/pages/Job_Configurations/template_step.html"><b>Warning:</b> This document is for an old version of Jenkins Templating Engine. The main version is master.</a></p>
+<div class="section" id="the-template-step">
+<span id="template-step"></span><h1>The Template Step<a class="headerlink" href="#the-template-step" title="Permalink to this headline">¶</a></h1>
+<p>The Jenkins Templating Engine adds a pipeline step called <code class="docutils literal"><span class="pre">template</span></code> that can be called from a pipeline.</p>
+<p>This step is typically called indirectly when using a <a class="reference internal" href="repository.html#multibranch-job"><span class="std std-ref">Multibranch Job</span></a> or when
+creating a <a class="reference internal" href="github_org.html#github-organization-job"><span class="std std-ref">GitHub Organization Job</span></a>.</p>
+<p>When this step is executed, the pipeline will have access to the primitives that have been defined via
+the aggregated result of the specified pipeline configuration files as well as any steps that have been
+contributed by loaded libraries.</p>
+<div class="section" id="set-the-template-implicitely-from-a-governance-tier">
+<h2>Set the Template implicitely from a Governance Tier<a class="headerlink" href="#set-the-template-implicitely-from-a-governance-tier" title="Permalink to this headline">¶</a></h2>
+<p>The real power in the Jenkins Templating Engine is that it allows you to
+externalize the Jenkinsfile from an individual source code repository, and
+generalize it to be used by multiple teams simultaneously.</p>
+<p>This means that the default way to define a Template is externally in a source
+code repository via a Governance Tier.</p>
+<p>This is exactly what happens when you invoke the <code class="docutils literal"><span class="pre">template</span></code> step directly
+with no parameters via <code class="docutils literal"><span class="pre">template()</span></code>.</p>
+<p>When no parameters are passed, the pipeline configuration files defined on
+each Governance Tier are aggregated.  This aggregated configuration is then used
+to initialize the Template’s environment with the various Primitives that were defined
+as well as load any libraries that have been configured.</p>
+</div>
+<div class="section" id="set-the-template-via-a-closure">
+<h2>Set the Template via a Closure<a class="headerlink" href="#set-the-template-via-a-closure" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">template</span></code> step itself takes an optional <code class="docutils literal"><span class="pre">Closure</span></code> parameter.  This <code class="docutils literal"><span class="pre">Closure</span></code> parameter
+is most often used for testing, though if governance is not a factor it works just as well as
+defining your pipeline template externally.</p>
+<div class="section" id="an-example">
+<h3>An Example<a class="headerlink" href="#an-example" title="Permalink to this headline">¶</a></h3>
+<p>Let’s assume that you are running a typical Jenkinsfile and want to invoke the <code class="docutils literal"><span class="pre">template</span></code> step directly.</p>
+<p>You have configured a Governance Tier that will load a library contributing a <code class="docutils literal"><span class="pre">build()</span></code> step.</p>
+<p>Executing this <code class="docutils literal"><span class="pre">build</span></code> step then, can be done by trying to invoke it from within the context of the
+<code class="docutils literal"><span class="pre">template</span></code> step as follows:</p>
+<div class="code groovy highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
+    <span class="n">here</span> <span class="n">you</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">have</span> <span class="n">access</span> <span class="n">to</span> <span class="n">the</span>
+    <span class="n">build</span> <span class="n">step</span> <span class="n">because</span> <span class="n">it</span> <span class="n">has</span> <span class="ow">not</span> <span class="n">been</span> <span class="n">loaded</span> <span class="n">yet</span>
+<span class="o">*/</span>
+<span class="n">template</span><span class="p">{</span>
+    <span class="o">/*</span>
+        <span class="n">now</span> <span class="n">that</span> <span class="n">you</span> <span class="n">are</span> <span class="n">within</span> <span class="n">the</span> <span class="n">context</span> <span class="n">of</span> <span class="n">the</span>
+        <span class="n">template</span> <span class="n">step</span><span class="p">,</span> <span class="n">the</span> <span class="n">library</span> <span class="n">will</span> <span class="n">have</span> <span class="n">been</span> <span class="n">loaded</span>
+        <span class="ow">and</span> <span class="n">you</span> <span class="n">will</span> <span class="n">be</span> <span class="n">able</span> <span class="n">to</span> <span class="n">execute</span> <span class="n">the</span> <span class="n">build</span> <span class="n">step</span>
+    <span class="o">*/</span>
+    <span class="n">build</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>When a <code class="docutils literal"><span class="pre">Closure</span></code> is passed to the <code class="docutils literal"><span class="pre">template</span></code> step - we do not look for a
+template, regardless if a Governance Tier specifies what template should be used.</p>
+<p class="last">This is because if you want to restrict what template should be used, it’s best
+to use a Multibranch or GitHub Organization job to apply these standards across
+entire repositories or organizations.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pipeline.html" class="btn btn-neutral float-right" title="Individual Pipeline Jobs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../Pipeline_Templating/configuration_file_sandboxing.html" class="btn btn-neutral float-left" title="Configuration File Sandboxing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Booz Allen Hamilton
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: 1.3
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Tags</dt>
+            <dd><a href="../../../1.0.0/index.html">1.0.0</a></dd>
+            <dd><a href="../../../1.1/index.html">1.1</a></dd>
+            <dd><a href="../../../1.1.1/index.html">1.1.1</a></dd>
+            <dd><a href="template_step.html">1.3</a></dd>
+            <dd><a href="../../../v0.1-alpha/index.html">v0.1-alpha</a></dd>
+            <dd><a href="../../../v1.2/index.html">v1.2</a></dd>
+        </dl>
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../../../master/pages/Job_Configurations/template_step.html">master</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
