@@ -232,6 +232,46 @@ accepts an application environment as an argument, you could reference these obj
 </pre></div>
 </div>
 </div>
+<div class="section" id="determining-context">
+<h2>Determining Context<a class="headerlink" href="#determining-context" title="Permalink to this headline">¶</a></h2>
+<p>A created ApplicationEnvironment can determine the previous and next ApplicationEnvironment that’s
+been defined through the <code class="docutils literal"><span class="pre">previous</span></code> and <code class="docutils literal"><span class="pre">next</span></code> properties.</p>
+<p>The first environment’s <code class="docutils literal"><span class="pre">previous</span></code> property and the last environment’s <code class="docutils literal"><span class="pre">next</span></code> property will be <code class="docutils literal"><span class="pre">null</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">These properties are automatically configured.  If you try to set the <code class="docutils literal"><span class="pre">previous</span></code> and <code class="docutils literal"><span class="pre">next</span></code> properties
+in the environment’s definition an exception will be thrown.</p>
+</div>
+<p>For example, defining:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">application_environments</span><span class="p">{</span>
+    <span class="n">dev</span><span class="p">{</span>
+        <span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;Development&quot;</span>
+    <span class="p">}</span>
+    <span class="n">test</span><span class="p">{</span>
+        <span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;Test&quot;</span>
+    <span class="p">}</span>
+    <span class="n">prod</span><span class="p">{</span>
+        <span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;Production&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This will create <code class="docutils literal"><span class="pre">dev</span></code>, <code class="docutils literal"><span class="pre">test</span></code>, and <code class="docutils literal"><span class="pre">prod</span></code> objects to be leveraged in your libraries and templates.</p>
+<p>Then, to validate their context you could create a template such as:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">validate</span> <span class="n">dev</span> <span class="n">environment</span><span class="s1">&#39;s context</span>
+<span class="k">assert</span> <span class="n">dev</span><span class="o">.</span><span class="n">previous</span> <span class="o">==</span> <span class="n">null</span>
+<span class="k">assert</span> <span class="n">dev</span><span class="o">.</span><span class="n">next</span> <span class="o">==</span> <span class="n">test</span>
+
+<span class="o">//</span> <span class="n">validate</span> <span class="n">test</span> <span class="n">environment</span><span class="s1">&#39;s context</span>
+<span class="k">assert</span> <span class="n">test</span><span class="o">.</span><span class="n">previous</span> <span class="o">==</span> <span class="n">dev</span>
+<span class="k">assert</span> <span class="n">test</span><span class="o">.</span><span class="n">next</span> <span class="o">==</span> <span class="n">prod</span>
+
+<span class="o">//</span> <span class="n">validate</span> <span class="n">prod</span> <span class="n">environment</span><span class="s1">&#39;s context</span>
+<span class="k">assert</span> <span class="n">prod</span><span class="o">.</span><span class="n">previous</span> <span class="o">==</span> <span class="n">test</span>
+<span class="k">assert</span> <span class="n">prod</span><span class="o">.</span><span class="n">next</span> <span class="o">==</span> <span class="n">null</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="additional-configurations">
 <h2>Additional Configurations<a class="headerlink" href="#additional-configurations" title="Permalink to this headline">¶</a></h2>
 <p>The Application Environment primitive can also accept an arbitrary number of additional
