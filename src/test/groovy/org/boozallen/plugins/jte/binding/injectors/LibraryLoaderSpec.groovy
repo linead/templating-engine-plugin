@@ -1,6 +1,7 @@
 package org.boozallen.plugins.jte.binding
 
 import org.boozallen.plugins.jte.binding.injectors.LibraryLoader
+import org.boozallen.plugins.jte.config.TemplateGlobalConfig
 import org.boozallen.plugins.jte.utils.TemplateScriptEngine
 import spock.lang.*
 import org.boozallen.plugins.jte.binding.injectors.StepWrapper
@@ -194,6 +195,49 @@ class LibraryLoaderSpec extends Specification {
         then: 
             1 * s1.loadLibrary(script, "libA", [:])
             0 * s2.loadLibrary(script, "libA", [:])        
+    }
+
+    @WithoutJenkins
+    def "library on higher governance tier gets loaded if library override set to false"(){
+        setup:
+        TemplateGlobalConfig.get().setAllowLibraryOverride(false)
+        MockLibraryProvider s1 = Mock{
+            hasLibrary("libA") >> true
+        }
+        MockLibraryProvider s2 = Mock{
+            hasLibrary("libA") >> true
+        }
+
+        LibraryConfiguration c1 = Mock{
+            getLibraryProvider() >> s1
+        }
+        LibraryConfiguration c2 = Mock{
+            getLibraryProvider() >> s2
+        }
+
+        GovernanceTier tier1 = Mock{
+            getLibraries() >> [ c1 ]
+        }
+        GovernanceTier tier2 = GroovyMock(global:true){
+            getLibraries() >> [ c2 ]
+        }
+        GovernanceTier.getHierarchy() >> [ tier1, tier2 ]
+
+        // mock libraries to load
+        TemplateConfigObject config = new TemplateConfigObject(config: [
+                libraries: [
+                        libA: [:]
+                ]
+        ])
+
+        when:
+        LibraryLoader.doInject(config, script)
+        then:
+        0 * s1.loadLibrary(script, "libA", [:])
+        1 * s2.loadLibrary(script, "libA", [:])
+
+        cleanup:
+        TemplateGlobalConfig.get().setAllowLibraryOverride(true)
     }
 
     @WithoutJenkins

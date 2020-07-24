@@ -39,7 +39,7 @@ import com.cloudbees.groovy.cps.NonCPS
         List<GovernanceTier> tiers = GovernanceTier.getHierarchy() 
         List<LibraryConfiguration> libs = tiers.collect{ it.getLibraries() }.flatten().minus(null)
         List<LibraryProvider> providers = libs.collect{ it.getLibraryProvider() }.flatten().minus(null)
-        if(TemplateGlobalConfig.get().getAllowLibraryOverride()) {
+        if(!TemplateGlobalConfig.get().getAllowLibraryOverride()) {
             providers = providers.reverse();
         }
 
