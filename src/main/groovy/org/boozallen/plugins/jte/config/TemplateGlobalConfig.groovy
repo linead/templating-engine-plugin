@@ -26,6 +26,7 @@ import jenkins.model.GlobalConfiguration
 public class TemplateGlobalConfig extends GlobalConfiguration {
 
     private GovernanceTier tier
+    private Boolean allowLibraryOverride = true;
 
     public static TemplateGlobalConfig get() {
         return GlobalConfiguration.all().get(TemplateGlobalConfig)
@@ -44,4 +45,11 @@ public class TemplateGlobalConfig extends GlobalConfiguration {
         return tier
     }
 
+    Boolean getAllowLibraryOverride() {
+        return allowLibraryOverride
+    }
+
+    void setAllowLibraryOverride(Boolean allowLibraryOverride) {
+        this.allowLibraryOverride = allowLibraryOverride
+    }
 }

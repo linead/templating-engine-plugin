@@ -17,6 +17,7 @@
 package org.boozallen.plugins.jte.binding.injectors
 
 import org.boozallen.plugins.jte.binding.*
+import org.boozallen.plugins.jte.config.TemplateGlobalConfig
 import org.boozallen.plugins.jte.utils.RunUtils
 import org.boozallen.plugins.jte.utils.TemplateScriptEngine
 import org.boozallen.plugins.jte.config.TemplateConfigObject
@@ -38,6 +39,9 @@ import com.cloudbees.groovy.cps.NonCPS
         List<GovernanceTier> tiers = GovernanceTier.getHierarchy() 
         List<LibraryConfiguration> libs = tiers.collect{ it.getLibraries() }.flatten().minus(null)
         List<LibraryProvider> providers = libs.collect{ it.getLibraryProvider() }.flatten().minus(null)
+        if(TemplateGlobalConfig.get().getAllowLibraryOverride()) {
+            providers = providers.reverse();
+        }
 
         ArrayList libConfigErrors = []
         config.getConfig().libraries.each{ libName, libConfig ->
@@ -50,7 +54,7 @@ import com.cloudbees.groovy.cps.NonCPS
         }
         libConfigErrors = libConfigErrors.flatten().minus(null)
         
-        // if library errors were found: 
+        // if library errors were found:
         if(libConfigErrors){
             TemplateLogger.printError("----------------------------------")
             TemplateLogger.printError("   Library Configuration Errors   ")
